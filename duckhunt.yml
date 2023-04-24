@@ -1,0 +1,29 @@
+# duckhunt config file
+# alert via popup
+alert: true
+# alert in foreground
+alertontop: true
+# popup title
+alerttitle: "WARNING"
+# popup message
+alertmessage: "Fast keystrokes detected, check your USB Ports"
+
+# block user inputs if fast keystrokes are detected, duration of block in seconds
+# to not block set value to 0
+blockduration: 10
+
+# name for the logfile, will get saved into the same folder as the executable
+logfile: "duckhunt.log"
+
+# ADVANCED
+# maximal time interval between keystrokes in milliseconds
+maxInterval: 50
+
+# how many keystrokes will be used to calculate the average time interval
+# this value sets the minimum length of a payload. if an attacker has a payload with less keystrokes than this value, it will succeed
+historySize: 25
+
+# some ignored keys like: SPACE, SLASH, CR, DEL, backspace, arrow keys, media keys etc.
+# key that are often sent repeatedly
+# see https://www.toptal.com/developers/keycode/table
+ignoredKeys: [8, 13, 32, 47, 90, 91, 92, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183]

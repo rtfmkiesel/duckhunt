@@ -1,0 +1,34 @@
+project_name: duckhunt
+
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - id: windows
+    ldflags:
+      - -s -w -H=windowsgui
+    binary: '{{ .ProjectName }}'
+    main: ./cmd/{{ .ProjectName }}/{{ .ProjectName }}.go
+    goos:
+      - windows
+    goarch:
+      - amd64
+      - arm64
+  - id: windows-terminal
+    ldflags:
+      - -s -w
+    binary: '{{ .ProjectName }}_cli'
+    main: ./cmd/{{ .ProjectName }}/{{ .ProjectName }}.go
+    goos:
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+- format: zip
+  name_template: >-
+    {{ .ProjectName }}_{{ .Arch }}
+  files:
+    - README.md
+    - duckhunt.yml
